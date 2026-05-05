@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Charts</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <style>
+    .dashboard {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .card {
+      flex: 1;
+      min-width: 280px;
+      width: 100%;
+      background: #fff;
+      border: 1px solid #e8ddd4;
+      border-radius: 14px;
+      padding: 1.2rem 1.4rem;
+      box-shadow: 0 2px 10px rgba(112, 66, 20, 0.06);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #3a2010;
+    }
+
+    .badge {
+      font-size: 12px;
+      color: #7d5030;
+      background: #f5ede4;
+      border: 1px solid #e0c9b0;
+      border-radius: 8px;
+      padding: 3px 10px;
+      cursor: pointer;
+    }
+
+    /* Revenue chart */
+    .chart-wrapper {
+      position: relative;
+      width: 100%;
+      height: 200px;
+    }
+
+    /* Donut + legend */
+    .donut-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .donut-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      flex-shrink: 0;
+    }
+
+    .legend {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .legend-item { display: flex; flex-direction: column; }
+
+    .legend-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      color: #3a2010;
+      margin-bottom: 2px;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .legend-sub {
+      padding-left: 16px;
+      color: #a08060;
+    }
+  </style>
+</head>
+<body>
+
+<div class="dashboard">
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Revenue overview</span>
+      <span class="badge">Weekly ▾</span>
+    </div>
+    <div class="chart-wrapper">
+      <canvas id="revenueChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Chart 2: Top Categories -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Top categories</span>
+      <span class="badge">This Month ▾</span>
+    </div>
+    <div class="donut-section">
+      <div class="donut-wrapper">
+        <canvas id="donutChart"></canvas>
+      </div>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-label">
+            <span class="legend-dot" style="background: rgb(112,66,20);"></span>
+            Electronics (35%)
+          </div>
+          <div class="legend-sub">2,458 orders</div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-label">
+            <span class="legend-dot" style="background: rgb(160,100,40);"></span>
+            Clothing (28%)
+          </div>
+          <div class="legend-sub">2,458 orders</div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-label">
+            <span class="legend-dot" style="background: rgb(200,145,80);"></span>
+            Home & Garden (22%)
+          </div>
+          <div class="legend-sub">2,458 orders</div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-label">
+            <span class="legend-dot" style="background: rgb(230,195,150);"></span>
+            Food (15%)
+          </div>
+          <div class="legend-sub">2,458 orders</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const brown = 'rgb(112,66,20)';
+  const brownFill = 'rgba(112,66,20,0.12)';
+
+  // --- Revenue Line Chart ---
+  new Chart(document.getElementById('revenueChart'), {
+    type: 'line',
+    data: {
+      labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      datasets: [{
+        label: 'Revenue',
+        data: [320, 410, 370, 635, 480, 520, 460],
+        borderColor: brown,
+        backgroundColor: brownFill,
+        borderWidth: 2,
+        pointBackgroundColor: brown,
+        pointRadius: 3,
+        pointHoverRadius: 6,
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: { label: ctx => '$' + ctx.parsed.y },
+          displayColors: false,
+          backgroundColor: brown,
+          padding: 8,
+          cornerRadius: 6
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { font: { size: 11 }, color: '#a08060' }
+        },
+        y: {
+          grid: { color: 'rgba(112,66,20,0.06)' },
+          ticks: {
+            font: { size: 11 },
+            color: '#a08060',
+            callback: v => '$' + v
+          },
+          min: 0,
+          max: 800
+        }
+      }
+    }
+  });
+
+  // --- Top Categories Donut Chart ---
+  new Chart(document.getElementById('donutChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Electronics', 'Clothing', 'Home & Garden', 'Food'],
+      datasets: [{
+        data: [35, 28, 22, 15],
+        backgroundColor: [
+          'rgb(112,66,20)',
+          'rgb(160,100,40)',
+          'rgb(200,145,80)',
+          'rgb(230,195,150)'
+        ],
+        borderWidth: 0,
+        hoverOffset: 6
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '68%',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: { label: ctx => ctx.label + ': ' + ctx.parsed + '%' },
+          displayColors: false,
+          backgroundColor: brown,
+          padding: 8,
+          cornerRadius: 6
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
