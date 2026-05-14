@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu - Brewscape</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar-custom">
+        <div class="container">
+            <div class="logo"><a href="../index.html"><i class="fa-solid fa-mug-saucer text-warning"></i> <span>Brewscape</span></a></div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="menu.html" class="active">Menu</a>
+                <a href="about_us.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-icons">
+                <a href="favorites.html"><i class="fa-regular fa-heart"></i></a>
+                <a href="checkout.html" class="cart-icon"><i class="fa-solid fa-cart-shopping"></i> <span class="badge bg-warning text-dark" id="cart-count">0</span></a>
+                <div class="user-dropdown">
+                    <a href="javascript:void(0)" id="user-menu-btn"><i class="fa-regular fa-user"></i> <i class="fa-solid fa-angle-down ms-1"></i></a>
+                    <div class="dropdown-content" id="user-dropdown-menu">
+                        <div class="user-info p-3 border-bottom">
+                            <div class="fw-bold" id="user-name-display">Guest</div>
+                            <div class="small text-muted" id="user-email-display">Sign in to order</div>
+                        </div>
+                        <a href="my_profile.html">My Profile</a>
+                        <a href="my_orders.html">My Orders</a>
+                        <a href="favorites.html">Favorites</a>
+                        <div id="admin-link-container"></div>
+                        <a href="javascript:void(0)" id="logout-btn" class="text-danger">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header py-5 bg-light">
+        <div class="container text-center">
+            <h1 class="display-4">Our Menu</h1>
+            <p class="text-muted">Discover our handcrafted beverages and treats</p>
+        </div>
+    </header>
+
+    <section class="menu-section py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
+                        <input type="text" id="search-input" class="form-control border-start-0" placeholder="Search products...">
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex justify-content-md-end mt-3 mt-md-0">
+                    <div class="btn-group" id="category-filters">
+                        <button class="btn btn-outline-dark active" data-category="all">All</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4" id="menu-container">
+                <!-- Products loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <div class="footer-logo mb-3">
+                        <i class="fa-solid fa-mug-saucer text-warning"></i>
+                        <span>Brewscape</span>
+                    </div>
+                    <p class="footer-about">Crafting the perfect cup since 2020. Every bean tells a story, every sip is an experience.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="menu.html">Our Menu</a></li>
+                        <li><a href="about_us.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="my_orders.html">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h3>Categories</h3>
+                    <ul id="footer-categories"></ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info list-unstyled">
+                        <li><i class="fa-solid fa-location-dot me-2"></i> 123 Coffee Lane, Brew City, BC 12345</li>
+                        <li><i class="fa-solid fa-phone me-2"></i> +1 (555) 123-4567</li>
+                        <li><i class="fa-solid fa-envelope me-2"></i> hello@brewscape.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center pt-4 mt-4 border-top">
+                <p>&copy; 2026 Brewscape Coffee. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/core-data.js"></script>
+    <script src="../js/index.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const products = BrewscapeData.getData('products');
+            const categories = BrewscapeData.getData('categories');
+            const menuContainer = document.getElementById('menu-container');
+            const categoryFilters = document.getElementById('category-filters');
+            const searchInput = document.getElementById('search-input');
+            const cartCount = document.getElementById('cart-count');
+
+            // Load Category Filters
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = 'btn btn-outline-dark';
+                btn.textContent = cat.name;
+                btn.dataset.category = cat.id;
+                categoryFilters.appendChild(btn);
+            });
+
+            function renderMenu(filterCat = 'all', searchTerm = '') {
+                let filtered = products.filter(p => p.status === 'Active');
+                
+                if (filterCat !== 'all') {
+                    filtered = filtered.filter(p => p.categoryId == filterCat);
+                }
+                
+                if (searchTerm) {
+                    filtered = filtered.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
+                }
+
+                if (filtered.length === 0) {
+                    menuContainer.innerHTML = '<div class="col-12 text-center py-5"><p class="text-muted">No products found.</p></div>';
+                    return;
+                }
+
+                menuContainer.innerHTML = filtered.map(p => {
+                    const cat = categories.find(c => c.id === p.categoryId);
+                    const currentUser = BrewscapeData.getCurrentUser();
+                    const favorites = currentUser ? BrewscapeData.getData('favorites') : [];
+                    const isFav = currentUser && favorites.some(f => f.userId === currentUser.id && f.productId === p.id);
+
+                    return `
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="product-card">
+                                <div class="product-img-wrapper">
+                                    ${p.featured ? '<span class="badge-featured">Featured</span>' : ''}
+                                    <img src="${p.image}" alt="${p.name}">
+                                    <button class="favorite-btn ${isFav ? 'active' : ''}" style="position:absolute; top:10px; right:10px; background:white; border-radius:50%; width:30px; height:30px; display:flex; align-items:center; justify-content:center; border:none;" onclick="toggleFavorite(this, ${p.id})">
+                                        <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="product-content">
+                                    <div class="product-category">${cat ? cat.name : ''}</div>
+                                    <h3 class="product-title">${p.name}</h3>
+                                    <div class="product-footer">
+                                        <div class="product-price">$${p.price.toFixed(2)}</div>
+                                        <button class="btn btn-primary-gold btn-sm" onclick="addToCart(${p.id})">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // Filter Click
+            categoryFilters.addEventListener('click', e => {
+                if (e.target.tagName === 'BUTTON') {
+                    categoryFilters.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    renderMenu(e.target.dataset.category, searchInput.value);
+                }
+            });
+
+            // Search Input
+            searchInput.addEventListener('input', e => {
+                const activeCat = categoryFilters.querySelector('.active').dataset.category;
+                renderMenu(activeCat, e.target.value);
+            });
+
+            // Initial Render
+            const urlParams = new URLSearchParams(window.location.search);
+            const catId = urlParams.get('category') || 'all';
+            renderMenu(catId);
+            
+            // Set active filter if from URL
+            if (catId !== 'all') {
+                categoryFilters.querySelectorAll('button').forEach(b => {
+                    b.classList.toggle('active', b.dataset.category == catId);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

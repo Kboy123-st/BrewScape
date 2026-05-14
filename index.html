@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brewscape - Craft Your Perfect Cup</title>
+    <link rel="stylesheet" href="user/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar-custom">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fa-solid fa-mug-saucer text-warning"></i>
+                    <span>Brewscape</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="user/page/menu.html">Menu</a>
+                <a href="user/page/about_us.html">About Us</a>
+                <a href="user/page/contact.html">Contact</a>
+            </div>
+            <div class="nav-icons">
+                <a href="user/page/favorites.html"><i class="fa-regular fa-heart"></i></a>
+                <a href="user/page/checkout.html" class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge bg-warning text-dark" id="cart-count">0</span>
+                </a>
+                <div class="user-dropdown">
+                    <a href="javascript:void(0)" id="user-menu-btn">
+                        <i class="fa-regular fa-user"></i>
+                        <i class="fa-solid fa-angle-down ms-1"></i>
+                    </a>
+                    <div class="dropdown-content" id="user-dropdown-menu">
+                        <div class="user-info p-3 border-bottom">
+                            <div class="fw-bold" id="user-name-display">Guest</div>
+                            <div class="small text-muted" id="user-email-display">Sign in to order</div>
+                        </div>
+                        <a href="user/page/my_profile.html"><i class="fa-regular fa-user me-2"></i> My Profile</a>
+                        <a href="user/page/my_orders.html"><i class="fa-solid fa-box me-2"></i> My Orders</a>
+                        <a href="user/page/favorites.html"><i class="fa-regular fa-heart me-2"></i> Favorites</a>
+                        <div id="admin-link-container"></div>
+                        <a href="javascript:void(0)" id="logout-btn" class="text-danger"><i class="fa-solid fa-sign-out-alt me-2"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="welcome-text">WELCOME TO BREWSCAPE</p>
+                <h1>Craft Your <i>Perfect</i> Cup</h1>
+                <p class="hero-subtext">From bean to cup, we bring you the world's finest coffee experience. Discover our handcrafted blends and artisanal pastries.</p>
+                <div class="hero-btns">
+                    <a href="user/page/menu.html" class="btn btn-primary-gold">Explore Menu <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                    <a href="user/page/about_us.html" class="btn btn-outline-light">Our Story</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-mug-saucer"></i></div>
+                    <h3>Premium Beans</h3>
+                    <p>Sourced from the finest farms worldwide</p>
+                </div>
+                <div class="col-md-3 feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
+                    <h3>Organic Blends</h3>
+                    <p>Certified organic and sustainably grown</p>
+                </div>
+                <div class="col-md-3 feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-medal"></i></div>
+                    <h3>Master Roasted</h3>
+                    <p>Expertly roasted for peak flavor</p>
+                </div>
+                <div class="col-md-3 feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h3>Fast Delivery</h3>
+                    <p>Fresh to your door in under an hour</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section class="collections">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2>Our Collections</h2>
+                <p>Explore our carefully curated categories</p>
+            </div>
+            <div class="row g-4" id="categories-container">
+                <!-- Categories will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Items Section -->
+    <section class="popular-items">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2>Popular Items</h2>
+                    <p class="text-muted">Our most loved coffees and treats</p>
+                </div>
+                <a href="user/page/menu.html" class="btn btn-outline-dark">View All <i class="fa-solid fa-arrow-right ms-2"></i></a>
+            </div>
+            <div class="row g-4" id="popular-products-container">
+                <!-- Popular products will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container text-center">
+            <h2>Ready to Order?</h2>
+            <p>Browse our full menu and discover your next favorite brew.</p>
+            <a href="user/page/menu.html" class="btn btn-primary-gold px-5 py-3">Order Now <i class="fa-solid fa-arrow-right ms-2"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <div class="footer-logo mb-3">
+                        <i class="fa-solid fa-mug-saucer text-warning"></i>
+                        <span>Brewscape</span>
+                    </div>
+                    <p class="footer-about">Crafting the perfect cup since 2020. Every bean tells a story, every sip is an experience.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="user/page/menu.html">Our Menu</a></li>
+                        <li><a href="user/page/about_us.html">About Us</a></li>
+                        <li><a href="user/page/contact.html">Contact</a></li>
+                        <li><a href="user/page/my_orders.html">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h3>Categories</h3>
+                    <ul id="footer-categories">
+                        <!-- Categories will be loaded dynamically -->
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fa-solid fa-location-dot me-2"></i> 123 Coffee Lane, Brew City, BC 12345</li>
+                        <li><i class="fa-solid fa-phone me-2"></i> +1 (555) 123-4567</li>
+                        <li><i class="fa-solid fa-envelope me-2"></i> hello@brewscape.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center pt-4 mt-4 border-top">
+                <p>&copy; 2026 Brewscape Coffee. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/core-data.js"></script>
+    <script src="user/js/index.js"></script>
+</body>
+</html>

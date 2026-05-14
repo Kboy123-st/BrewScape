@@ -1,0 +1,34 @@
+<div class="header-dashboard">
+    <h2>Invoice Management</h2>
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <div class="date-filter" style="display: flex; align-items: center; gap: 8px;">
+            <input type="date" id="dateStart" class="form-control" style="padding: 5px 10px; border: 1px solid #ddd; border-radius: 4px;">
+            <span class="muted-text">to</span>
+            <input type="date" id="dateEnd" class="form-control" style="padding: 5px 10px; border: 1px solid #ddd; border-radius: 4px;">
+        </div>
+      </div>
+   </div>
+   
+   <div class="table-card">
+      <div class="header" style="padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+         <div id="invoice-count" class="muted-text">0 invoices total</div>
+         <div class="search-container">
+             <i class="fas fa-search"></i>
+             <input type="text" id="invoiceSearch" placeholder="Search Invoice or Order ID...">
+         </div>
+      </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Invoice #</th>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Total Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="invoice-table-body"></tbody>
+    </table>
+</div>

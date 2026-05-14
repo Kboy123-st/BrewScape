@@ -1,0 +1,59 @@
+<div class="header-dashboard">
+    <h2>Category Management</h2>
+    <button class="btn-create" onclick="openAddCategoryModal()"><i class="fas fa-plus"></i> Add Category</button>
+</div>
+
+<div class="table-card">
+    <div class="header" style="padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+        <div id="category-count" class="muted-text">0 categories total</div>
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search categories...">
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="category-table-body"></tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3 id="modalTitle">Add Category</h3>
+            <span class="close-btn" onclick="closeCategoryModal()">&times;</span>
+        </div>
+        <form id="categoryForm">
+            <input type="hidden" id="edit-id">
+            <div class="form-group">
+                <label>Category Name</label>
+                <input type="text" id="category-name" required>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="category-desc" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Category Image</label>
+                <div class="drop-zone" id="category-drop-zone">
+                    <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: #ccc;"></i>
+                    <p style="margin-top: 10px; color: #888; font-size: 14px;">Drag & drop image or click to upload</p>
+                    <img id="category-image-preview" src="" style="display: none;">
+                </div>
+                <input type="file" id="category-image-file" accept="image/*" style="display:none;">
+            </div>
+            <div class="modal-footer" style="margin-top:20px; text-align:right;">
+                <button type="button" class="btn-cancel" onclick="closeCategoryModal()" style="margin-right:10px;">Cancel</button>
+                <button type="submit" class="btn-create" id="submitBtn">Save Category</button>
+            </div>
+        </form>
+    </div>
+</div>

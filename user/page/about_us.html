@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us</title>
+  <link rel="stylesheet" href="../css/about.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../../assets/js/core-data.js"></script>
+  <script src="../js/index.js"></script>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+  <script
+    src="https://kit.fontawesome.com/0586c54656.js"
+    crossorigin="anonymous"
+  ></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitcount+Single:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <!-- Header -->
+  <nav class="navbar-custom">
+    <div class="container">
+      <div class="logo">
+        <a href="../index.html">
+          <i class="fa-solid fa-mug-saucer text-warning"></i>
+          <span>Brewscape</span>
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="../../index.html">Home</a>
+        <a href="./menu.html">Menu</a>
+        <a href="about_us.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-icons">
+        <a href="favorites.html"><i class="fa-regular fa-heart"></i></a>
+        <a href="checkout.html" class="cart-icon">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="badge bg-warning text-dark" id="cart-count">0</span>
+        </a>
+        <div class="user-dropdown">
+          <a href="javascript:void(0)" id="user-menu-btn"><i class="fa-regular fa-user"></i> <i class="fa-solid fa-angle-down ms-1"></i></a>
+          <div class="dropdown-content" id="user-dropdown-menu">
+            <div class="user-info p-3 border-bottom">
+              <div class="fw-bold" id="user-name-display">Guest</div>
+              <div class="small text-muted" id="user-email-display">Sign in to order</div>
+            </div>
+            <a href="my_profile.html">My Profile</a>
+            <a href="my_orders.html">My Orders</a>
+            <a href="favorites.html">Favorites</a>
+            <div id="admin-link-container"></div>
+            <a href="javascript:void(0)" id="logout-btn" class="text-danger">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+<section class="hero-banner">
+      <div class="hero-content">
+        <h1>Our Story</h1>
+        <p>coffee shop our full menu and discover your next favorite brew.</p>
+        <!-- <a href="#" class="order-btn">Order Now &rarr;</a> -->
+      </div>
+    </section>
+    <div class="prg">
+      <div class="prg-p">
+        <h1>From Bean to Cup</h1>
+        <p>Founded in 2020, Brewscape was born from a simple belief: everyone deserves access to exceptional coffee. What started as a small roastery has grown into a beloved destination for coffee enthusiasts.</p>
+        <p>We travel the world to source the finest beans from sustainable farms, working directly with farmers who share our passion for quality and ethical practices.</p>
+        <p>Every cup we serve tells a story — of the farmer who nurtured the beans, the roaster who perfected the blend, and the barista who crafted it with care.</p>
+      </div>
+      <div class="img-prg">
+        <img src="../img/logobg.png" alt="">
+      </div>
+    </div>
+    <div class="bg-container">
+      <div class="bg1">
+        <i class="fa-solid fa-mug-saucer" style="color: rgb(255, 212, 59);"></i>
+        <h2>50+</h2>
+        <p>Coffee Varieties</p>
+      </div>
+      <div class="bg2">
+        <i class="fa-solid fa-users" style="color: rgb(255, 212, 59);"></i>
+        <h2>10K+</h2>
+        <p>Happy Customers</p>
+      </div>
+      <div class="bg3">
+        <i class="fa-regular fa-bookmark" style="color: rgb(255, 212, 59);"></i>
+        <h2>15</h2>
+        <p>Awards Won</p>
+      </div>
+      <div class="bg4">
+        <i class="fa-brands fa-telegram" style="color: rgb(255, 212, 59);"></i>
+        <h2>12</h2>
+        <p>Countries Sourced</p>
+      </div>
+    </div>
+    <div class="Our-Values">
+      <h2>Our Values</h2>
+    </div>
+    <div class="Our-Values-page">
+      <div class="values-1">
+        <h3>Quality</h3>
+        <p>We never compromise on the quality of our ingredients and processes.</p>
+      </div>
+      <div class="values-2">
+        <h3>Sustainability</h3>
+        <p>Every decision considers our impact on the planet and communities.</p>
+      </div>
+      <div class="values-3">
+        <h3>Community</h3>
+        <p>We create spaces where people connect, share, and belong.</p>
+      </div>
+    </div>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+        <div class="footer-logo mb-3">
+          <i class="fa-solid fa-mug-saucer text-warning"></i>
+          <span>Brewscape</span>
+        </div>
+        <p class="footer-about">Crafting the perfect cup since 2020. Every bean tells a story, every sip is an experience.</p>
+        <div class="social-links mt-3">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="menu.html">Our Menu</a></li>
+          <li><a href="about_us.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="my_orders.html">Track Order</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+        <h3>Categories</h3>
+        <ul id="footer-categories"></ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <h3>Contact Us</h3>
+        <ul class="contact-info list-unstyled">
+          <li><i class="fa-solid fa-location-dot me-2"></i> 123 Coffee Lane, Brew City, BC 12345</li>
+          <li><i class="fa-solid fa-phone me-2"></i> +1 (555) 123-4567</li>
+          <li><i class="fa-solid fa-envelope me-2"></i> hello@brewscape.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom text-center pt-4 mt-4 border-top">
+      <p>&copy; 2026 Brewscape Coffee. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
